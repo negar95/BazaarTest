@@ -1,0 +1,6 @@
+framework module Pods_BazaarTestTests {
+  umbrella header "Pods-BazaarTestTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

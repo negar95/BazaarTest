@@ -35,11 +35,11 @@
                                 <rect key="frame" x="16" y="58" width="343" height="589"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="HmO-Sc-9qO" customClass="MovieTVC" customModule="BazaarTest" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="200" id="HmO-Sc-9qO" customClass="MovieTVC" customModule="BazaarTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HmO-Sc-9qO" id="qJn-Xa-mEX">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zHb-oK-k2s">
@@ -74,25 +74,40 @@
                                                         <constraint firstAttribute="width" constant="20" id="1Sf-c6-8mb"/>
                                                         <constraint firstAttribute="height" constant="20" id="Kzz-Fz-9mK"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <action selector="moreInfoAction:" destination="HmO-Sc-9qO" eventType="touchUpInside" id="r0e-HB-J0W"/>
-                                                    </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" minimumFontSize="1" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6b-Ni-beS">
+                                                    <rect key="frame" x="0.0" y="110" width="343" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="cVe-2d-Mdz"/>
+                                                    </constraints>
+                                                    <string key="text">more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more info</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="qLz-6r-AK1" secondAttribute="trailing" id="57r-v0-dhW"/>
+                                                <constraint firstItem="I6b-Ni-beS" firstAttribute="leading" secondItem="qJn-Xa-mEX" secondAttribute="leading" id="7KK-lp-Rdb"/>
                                                 <constraint firstItem="xOX-iT-lYz" firstAttribute="leading" secondItem="zHb-oK-k2s" secondAttribute="trailing" constant="10" id="8Ps-jk-vKL"/>
                                                 <constraint firstItem="lKm-DY-Xhq" firstAttribute="leading" secondItem="zHb-oK-k2s" secondAttribute="trailing" constant="10" id="TyO-jT-FXa"/>
                                                 <constraint firstItem="zHb-oK-k2s" firstAttribute="leading" secondItem="qJn-Xa-mEX" secondAttribute="leading" id="dEQ-9I-nTd"/>
+                                                <constraint firstAttribute="trailing" secondItem="I6b-Ni-beS" secondAttribute="trailing" id="ggQ-RB-ATb"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xOX-iT-lYz" secondAttribute="trailing" constant="20" symbolic="YES" id="hW5-KT-TEB"/>
                                                 <constraint firstItem="xOX-iT-lYz" firstAttribute="top" secondItem="lKm-DY-Xhq" secondAttribute="bottom" constant="13" id="kxE-lz-6Qe"/>
+                                                <constraint firstAttribute="bottom" secondItem="I6b-Ni-beS" secondAttribute="bottom" constant="9" id="ojd-ic-trh"/>
                                                 <constraint firstItem="lKm-DY-Xhq" firstAttribute="top" secondItem="qJn-Xa-mEX" secondAttribute="top" constant="15" id="oyO-25-hmv"/>
                                                 <constraint firstItem="qLz-6r-AK1" firstAttribute="leading" secondItem="lKm-DY-Xhq" secondAttribute="trailing" id="p6g-58-FJe"/>
                                                 <constraint firstItem="zHb-oK-k2s" firstAttribute="top" secondItem="qJn-Xa-mEX" secondAttribute="top" id="pLK-q6-hYn"/>
                                                 <constraint firstItem="qLz-6r-AK1" firstAttribute="top" secondItem="qJn-Xa-mEX" secondAttribute="top" constant="15" id="rRn-KE-4wK"/>
+                                                <constraint firstItem="I6b-Ni-beS" firstAttribute="width" secondItem="qJn-Xa-mEX" secondAttribute="width" id="yN3-nm-jT8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="movieImg" destination="zHb-oK-k2s" id="xni-Q1-cLU"/>
+                                            <outlet property="movieInfoBtn" destination="qLz-6r-AK1" id="gve-gk-TfE"/>
+                                            <outlet property="movieInfoHeight" destination="cVe-2d-Mdz" id="bY5-gG-YZP"/>
+                                            <outlet property="movieInfoLbl" destination="I6b-Ni-beS" id="J5e-ec-sUP"/>
                                             <outlet property="movieReleaseDateLbl" destination="xOX-iT-lYz" id="uGF-lx-9pv"/>
                                             <outlet property="movieTitleLbl" destination="lKm-DY-Xhq" id="oYG-8V-TjN"/>
                                         </connections>
@@ -114,6 +129,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="resultTable" destination="8ma-r3-LiM" id="ThY-VQ-zpD"/>
+                        <outlet property="searchBtn" destination="B3j-bj-uIf" id="oMo-b6-cWo"/>
+                        <outlet property="searchTF" destination="0K5-VE-EjF" id="hYY-ZY-sEW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
