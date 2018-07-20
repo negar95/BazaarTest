@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class SearchVC: UIViewController{
 
 
 
@@ -27,15 +27,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieTVC
-        return cell
-    }
     /*
     // MARK: - Navigation
 

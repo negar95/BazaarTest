@@ -27,6 +27,8 @@
 		84AA3FE32101E9F8008EE279 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA3FE22101E9F8008EE279 /* CoreDataHelper.swift */; };
 		84AA3FE52101EBED008EE279 /* SQLiteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA3FE42101EBED008EE279 /* SQLiteHelper.swift */; };
 		84AA3FEA2101F437008EE279 /* iCloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA3FE92101F437008EE279 /* iCloudHelper.swift */; };
+		84AA3FEC2101F608008EE279 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA3FEB2101F608008EE279 /* Extensions.swift */; };
+		84AA3FEE210224DB008EE279 /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA3FED210224DA008EE279 /* ViewHelper.swift */; };
 		FA57885F0F30EBC0CDBD36F9 /* Pods_BazaarTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E1E6069E97419E55A1DFDC /* Pods_BazaarTestTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,8 @@
 		84AA3FE42101EBED008EE279 /* SQLiteHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteHelper.swift; sourceTree = "<group>"; };
 		84AA3FE62101F3FE008EE279 /* BazaarTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BazaarTest.entitlements; sourceTree = "<group>"; };
 		84AA3FE92101F437008EE279 /* iCloudHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudHelper.swift; sourceTree = "<group>"; };
+		84AA3FEB2101F608008EE279 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		84AA3FED210224DA008EE279 /* ViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
 		88EA4FD8C0B805E92CD9FD08 /* Pods-BazaarTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BazaarTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BazaarTestTests/Pods-BazaarTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0A88D4910B8EDDA28C19B54 /* Pods-BazaarTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BazaarTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-BazaarTest/Pods-BazaarTest.release.xcconfig"; sourceTree = "<group>"; };
 		C08BE7C64A226704FE7EF84E /* Pods-BazaarTestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BazaarTestUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BazaarTestUITests/Pods-BazaarTestUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 			children = (
 				847E5A6A20FF2B5C009AF782 /* Assets.xcassets */,
 				84441C2D210087C800BF7E99 /* Values.swift */,
+				84AA3FEB2101F608008EE279 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 				84AA3FE22101E9F8008EE279 /* CoreDataHelper.swift */,
 				84AA3FE42101EBED008EE279 /* SQLiteHelper.swift */,
 				84AA3FE92101F437008EE279 /* iCloudHelper.swift */,
+				84AA3FED210224DA008EE279 /* ViewHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -503,9 +509,11 @@
 				84AA3FE52101EBED008EE279 /* SQLiteHelper.swift in Sources */,
 				84AA3FEA2101F437008EE279 /* iCloudHelper.swift in Sources */,
 				84AA3FE12101E500008EE279 /* MovieHelper.swift in Sources */,
+				84AA3FEE210224DB008EE279 /* ViewHelper.swift in Sources */,
 				842B7D722101D9B4009E9DF5 /* Search.swift in Sources */,
 				8488B46E2100611A00280A86 /* MovieTVC.swift in Sources */,
 				847E5A6920FF2B5C009AF782 /* BazaarTest.xcdatamodeld in Sources */,
+				84AA3FEC2101F608008EE279 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
