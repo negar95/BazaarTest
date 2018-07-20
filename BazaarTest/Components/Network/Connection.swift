@@ -19,6 +19,11 @@ class Connection {
         return instance
     }()
 
+    /**
+     - parameters:
+        - urlString: The request url
+        - onCompletion: 
+     */
     func jsonGetRequest(urlString: String, onCompletion: @escaping (JSON, Bool) -> Void) {
         Alamofire.request(urlString).responseJSON { (response) in
             switch response.result {
@@ -30,6 +35,11 @@ class Connection {
         }
     }
 
+    /**
+     - parameters:
+         - json:
+         - onCompletion:
+     */
     func checkValidity(json: JSON, onCompletion: (JSON, Bool) -> Void) {
 
         if let totalResults = json["total_results"].int {
@@ -45,7 +55,7 @@ class Connection {
         }
     }
 
-    func xmlGetRequest(urlString: String, onCompletion: @escaping ([String:String], Bool) -> Void) {
+    func xmlGetRequest(urlString: String, onCompletion: @escaping ([String:Any], Bool) -> Void) {
         Alamofire.request(urlString).responseData { response in
             switch response.result {
             case .success(let value):
@@ -53,7 +63,18 @@ class Connection {
                 if let totalResults = xml["total_results"].int{
 
                     if totalResults > 0 {
-                        onCompletion(xml["results"].attributes, true)
+                        var files: [[String: String]] = [[String: String]]()
+                        for item in xml["results"]{
+                            var res: [String: String] = [String: String]()
+                            res["id"] = item.element?.attributes["id"]!
+                            res["title"] = item.element?.attributes["title"]!
+                            res["release_date"] = item.element?.attributes["release_date"]!
+                            res["overview"] = item.element?.attributes["overview"]!
+                            res["poster_path"] = item.element?.attributes["poster_path"]!
+                            files.append(res)
+                        }
+                         Movie.initItems(items: files)
+                        onCompletion(["success":"true"], true)
                     } else {
                         onCompletion(["error":"bad request"],false)
                     }
@@ -66,6 +87,4 @@ class Connection {
 
         }
     }
-
-
 }

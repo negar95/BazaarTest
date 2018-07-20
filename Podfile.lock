@@ -1,24 +1,36 @@
 PODS:
   - Alamofire (4.7.1)
+  - SQLCipher (3.4.2):
+    - SQLCipher/standard (= 3.4.2)
+  - SQLCipher/common (3.4.2)
+  - SQLCipher/standard (3.4.2):
+    - SQLCipher/common
+  - SQLite.swift/SQLCipher (0.11.4):
+    - SQLCipher (>= 3.4.0)
   - SwiftyJSON (4.0.0)
   - SwiftyXMLParser (4.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - SQLite.swift/SQLCipher (~> 0.11.2)
   - SwiftyJSON
   - SwiftyXMLParser
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - SQLCipher
+    - SQLite.swift
     - SwiftyJSON
     - SwiftyXMLParser
 
 SPEC CHECKSUMS:
   Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  SQLCipher: f9fcf29b2e59ced7defc2a2bdd0ebe79b40d4990
+  SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwiftyXMLParser: 8065da2e715e86aeba677a34fad8c252db5128bb
 
-PODFILE CHECKSUM: 12f3f01c412443fa95339538fb68b1e8e69cfc0d
+PODFILE CHECKSUM: 788eb1f31be6971ba385f2f726a5cf6e4e93faf7
 
 COCOAPODS: 1.5.0

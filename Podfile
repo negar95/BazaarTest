@@ -9,6 +9,8 @@ target 'BazaarTest' do
   pod 'Alamofire'
   pod 'SwiftyXMLParser'
   pod 'SwiftyJSON'
+  pod 'SQLite.swift/SQLCipher', '~> 0.11.2'
+
 
   target 'BazaarTestTests' do
     inherit! :search_paths
