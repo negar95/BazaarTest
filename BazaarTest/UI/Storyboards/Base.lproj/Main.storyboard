@@ -114,6 +114,9 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Dat-UK-gdR">
+                                <rect key="frame" x="334" y="25" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -125,11 +128,14 @@
                             <constraint firstItem="B3j-bj-uIf" firstAttribute="leading" secondItem="0K5-VE-EjF" secondAttribute="trailing" id="R6Y-bj-qXM"/>
                             <constraint firstItem="8ma-r3-LiM" firstAttribute="top" secondItem="0K5-VE-EjF" secondAttribute="bottom" constant="8" id="bRH-OT-fo2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8ma-r3-LiM" secondAttribute="bottom" constant="20" id="cvZ-Oy-gd9"/>
+                            <constraint firstItem="Dat-UK-gdR" firstAttribute="centerY" secondItem="B3j-bj-uIf" secondAttribute="centerY" id="kfT-h8-yvF"/>
+                            <constraint firstItem="Dat-UK-gdR" firstAttribute="centerX" secondItem="B3j-bj-uIf" secondAttribute="centerX" id="rBb-gw-gEn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="B3j-bj-uIf" secondAttribute="trailing" constant="16" id="xKm-NJ-bDb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="Dat-UK-gdR" id="ajL-8S-DH4"/>
                         <outlet property="resultTable" destination="8ma-r3-LiM" id="ThY-VQ-zpD"/>
                         <outlet property="searchBtn" destination="B3j-bj-uIf" id="oMo-b6-cWo"/>
                         <outlet property="searchTF" destination="0K5-VE-EjF" id="hYY-ZY-sEW"/>

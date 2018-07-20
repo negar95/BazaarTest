@@ -10,6 +10,7 @@ target 'BazaarTest' do
   pod 'SwiftyXMLParser'
   pod 'SwiftyJSON'
   pod 'SQLite.swift/SQLCipher', '~> 0.11.2'
+  pod 'PINRemoteImage'
 
 
   target 'BazaarTestTests' do

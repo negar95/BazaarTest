@@ -1,5 +1,14 @@
 PODS:
   - Alamofire (4.7.1)
+  - FLAnimatedImage (1.0.12)
+  - PINCache (2.3)
+  - PINRemoteImage (2.1.4):
+    - PINRemoteImage/FLAnimatedImage (= 2.1.4)
+  - PINRemoteImage/Core (2.1.4):
+    - PINCache (>= 2.1)
+  - PINRemoteImage/FLAnimatedImage (2.1.4):
+    - FLAnimatedImage (>= 1.0)
+    - PINRemoteImage/Core
   - SQLCipher (3.4.2):
     - SQLCipher/standard (= 3.4.2)
   - SQLCipher/common (3.4.2)
@@ -12,6 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - PINRemoteImage
   - SQLite.swift/SQLCipher (~> 0.11.2)
   - SwiftyJSON
   - SwiftyXMLParser
@@ -19,6 +29,9 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - FLAnimatedImage
+    - PINCache
+    - PINRemoteImage
     - SQLCipher
     - SQLite.swift
     - SwiftyJSON
@@ -26,11 +39,14 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
+  PINRemoteImage: 4ac4011c5caefd6befd99758e09becede05d3226
   SQLCipher: f9fcf29b2e59ced7defc2a2bdd0ebe79b40d4990
   SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwiftyXMLParser: 8065da2e715e86aeba677a34fad8c252db5128bb
 
-PODFILE CHECKSUM: 788eb1f31be6971ba385f2f726a5cf6e4e93faf7
+PODFILE CHECKSUM: 7671b87939eb01cb39b72cfc441481cc524b86ad
 
 COCOAPODS: 1.5.0
