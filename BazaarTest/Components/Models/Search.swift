@@ -8,26 +8,40 @@
 
 import Foundation
 import SQLite
+import SwiftyJSON
 
 class Search : NSObject, NSCoding {
 
     static let TABLE_NAME = "Search"
-    static let NAME = Expression<String>("name")
+    static let TITLE = Expression<String>("title")
 
     var title = ""
 
-    func encode(with aCoder: NSCoder) {
-        self.title = aDecoder.decodeObject(forKey: "title") as! String
+    override init() {
 
+    }
+
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.title, forKey: "title")
     }
 
     required init?(coder aDecoder: NSCoder) {
-        aDecoder.encode(self.title, forKey: "title")
-
+        self.title = aDecoder.decodeObject(forKey: "title") as! String
     }
 
+    class func buildDatabaseRow(row: Row) -> Search {
+        let search = Search()
+        search.title = row[TITLE]
+        return search
+    }
 
-
+    class func buildDatabaseList(list: AnySequence<Row>) -> [Search] {
+        var lstSearches = [Search]()
+        for data in list {
+            lstSearches.append(buildDatabaseRow(row: data))
+        }
+        return lstSearches
+    }
 
 
 }

@@ -11,10 +11,10 @@ import SwiftyJSON
 import SwiftyXMLParser
 import Alamofire
 
-class Connection {
+class ApiHelper {
 
-    static let connection: Connection = {
-        let instance = Connection()
+    static let sharedApi: ApiHelper = {
+        let instance = ApiHelper()
 
         return instance
     }()
@@ -24,8 +24,9 @@ class Connection {
         - urlString: The request url
         - onCompletion: 
      */
-    func jsonGetRequest(urlString: String, onCompletion: @escaping (JSON, Bool) -> Void) {
-        Alamofire.request(urlString).responseJSON { (response) in
+    func jsonGetRequest(urlString: String, lstParams:
+        [String: AnyObject], onCompletion: @escaping (JSON, Bool) -> Void) {
+        Alamofire.request(urlString, method: .get, parameters: lstParams).responseJSON { (response) in
             switch response.result {
             case .success(let value):
                 self.checkValidity(json: JSON(value), onCompletion: onCompletion)
@@ -55,8 +56,9 @@ class Connection {
         }
     }
 
-    func xmlGetRequest(urlString: String, onCompletion: @escaping ([String:Any], Bool) -> Void) {
-        Alamofire.request(urlString).responseData { response in
+    func xmlGetRequest(urlString: String, lstParams:
+        [String: AnyObject], onCompletion: @escaping ([String:Any], Bool) -> Void) {
+        Alamofire.request(urlString, method: .get, parameters: lstParams).responseData { response in
             switch response.result {
             case .success(let value):
                 let xml = XML.parse(value)

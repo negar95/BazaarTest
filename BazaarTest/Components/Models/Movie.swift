@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 import SwiftyXMLParser
 
-class Movie {
+class Movie : NSObject{
     static var items = [[String: Any]]()
     var id = 0
     var name = ""
