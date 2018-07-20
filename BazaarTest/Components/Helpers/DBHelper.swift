@@ -10,13 +10,13 @@ import UIKit
 import SQLite
 
 
-class DatabaseHelper: NSObject {
+class DBHelper: NSObject {
     var database: Connection!
 
 
-    static let sharedDatabase: DatabaseHelper = {
+    static let sharedDatabase: DBHelper = {
 
-        let instance = DatabaseHelper()
+        let instance = DBHelper()
         let docsurl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         let url = docsurl.appendingPathComponent(Values.DATABASE_NAME + ".sqlite")
         instance.database = try! Connection(url.path)

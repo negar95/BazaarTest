@@ -14,7 +14,7 @@ class SQLiteHelper : NSObject{
     func createTables() {
         let search = Table(Search.TABLE_NAME)
         do {
-            try DatabaseHelper.sharedDatabase.database.run(search.create {t in
+            try DBHelper.sharedDatabase.database.run(search.create {t in
                 t.column(Search.TITLE, primaryKey: true)
             })
         } catch  {
