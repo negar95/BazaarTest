@@ -31,8 +31,9 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
         super.viewDidLoad()
         self.resultTable.delegate = self
         self.resultTable.dataSource = self
-        self.indicator.isHidden = true
         self.resultTable.isHidden = true
+
+        self.indicator.isHidden = true
         self.searchBtn.addTarget(self, action: #selector(self.search), for: .touchUpInside)
         // Do any additional setup after loading the view.
         movieHelper.delegate = self
@@ -44,23 +45,26 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
     }
 
     @objc func search() {
+        self.currentPage = 1
+        self.movies.removeAll()
+        self.retryLimiter = 0
+        self.resultTable.isHidden = true
+
         if !((searchTF.text?.isEmpty)!) {
             if(self.searchTF.text != self.query) {
                 self.searchBtn.isHidden = true
                 self.indicator.isHidden = false
                 self.indicator.startAnimating()
                 self.query = searchTF.text!
-                movieHelper.getMovies(page: currentPage, query: self.query) }
+                movieHelper.getMovies(page: currentPage, query: self.query)
+            }
         } else {
-            self.movies.removeAll()
             ViewHelper.showToastMessage(message: "I can't search for nothing!")
         }
 
     }
 
     func getMovieSuccessfuly(lstMovies: [Movie], page: Int) {
-
-        retryLimiter = 0
         self.page = page
         for movie in lstMovies {
             self.movies.append(movie)
@@ -73,11 +77,12 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
     }
 
     func failedToGetMovie(error: String) {
-        if retryLimiter<5{
+        if retryLimiter < 5 {
             ViewHelper.showToastMessage(message: "error!")
             self.indicator.isHidden = true
+            self.searchBtn.isHidden = false
             movieHelper.getMovies(page: self.currentPage, query: self.query)
-            retryLimiter+=1
+            retryLimiter += 1
         }
 
     }
@@ -91,9 +96,9 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
         let movie = movies[indexPath.row]
         cell.movieTitleLbl.text = movie.name
         cell.movieReleaseDateLbl.text = "🕒 " + movie.date
-        if movie.info.isEmpty{
+        if movie.info.isEmpty {
             cell.movieInfoLbl.text = "No info!"
-        }else{
+        } else {
             cell.movieInfoLbl.text = movie.info
         }
         cell.movieImg.pin_setImage(from: URL(string: (Values.PIC_URL + movie.poster))!)
@@ -108,7 +113,7 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath == expandedCell{
+        if indexPath == expandedCell {
             return 200
         }
         return 100
@@ -116,11 +121,11 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        if expandedCell != nil{
+        if expandedCell != nil {
             let cell = tableView.cellForRow(at: expandedCell!) as! MovieTVC
             cell.movieInfoLbl.isHidden = true
             expandedCell = nil
-        }else if expandedCell == indexPath {
+        } else if expandedCell == indexPath {
             expandedCell = nil
         } else {
             let cell = tableView.cellForRow(at: indexPath) as! MovieTVC
@@ -137,6 +142,11 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
         }
 
     }
+
+    @IBAction func focusOnTF(_ sender: Any) {
+        
+    }
+
     /*
     // MARK: - Navigation
 
