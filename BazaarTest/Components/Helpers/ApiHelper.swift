@@ -45,7 +45,7 @@ class ApiHelper {
 
         if let totalResults = json["total_results"].int {
             if totalResults > 0 {
-                onCompletion(json["results"], true)
+                onCompletion(json, true)
             } else {
                 onCompletion(["error": "bad request"], false)
             }

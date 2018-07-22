@@ -9,8 +9,11 @@
 import Foundation
 
 class Values {
-    static let SEARCH_URL = "http://api.themoviedb.org/search/movie"
-    static let PIC_URL = "http://image.tmdb.org/t/p/w92"
+    static let SEARCH_URL = "http://api.themoviedb.org/3/search/movie"
+
+    static let PIC_URL = "http://image.tmdb.org/t/p/w92/"
     static let DATABASE_NAME = "databaseOfRecentSearches"
+    static let MORE_INFO = "moreInfo"
+    static let LESS_INFO = "lessInfo"
 
 }
