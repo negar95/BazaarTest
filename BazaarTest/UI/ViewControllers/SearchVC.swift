@@ -23,6 +23,8 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
     var query = ""
 
     let movieHelper = MovieHelper()
+    let coreData = CoreDataHelper()
+
 
     var retryLimiter = 0
     var expandedCell: IndexPath?
@@ -73,12 +75,18 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
         self.searchBtn.isHidden = false
         self.resultTable.isHidden = false
         self.resultTable.reloadData()
+        let search = Search()
+        search.title = self.query
+        let isSaved = coreData.saveSearchToCoreData(search: search)
+        if !isSaved{
+            ViewHelper.showToastMessage(message: "couldn't save the search query!")
+        }
         self.currentPage += 1
     }
 
     func failedToGetMovie(error: String) {
         if retryLimiter < 5 {
-            ViewHelper.showToastMessage(message: "error!")
+            ViewHelper.showToastMessage(message: error)
             self.indicator.isHidden = true
             self.searchBtn.isHidden = false
             movieHelper.getMovies(page: self.currentPage, query: self.query)
@@ -96,10 +104,9 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
         let movie = movies[indexPath.row]
         cell.movieTitleLbl.text = movie.name
         cell.movieReleaseDateLbl.text = "🕒 " + movie.date
+        cell.movieInfoLbl.text = movie.info
         if movie.info.isEmpty {
-            cell.movieInfoLbl.text = "No info!"
-        } else {
-            cell.movieInfoLbl.text = movie.info
+            cell.arrowImg.isHidden = true
         }
         cell.movieImg.pin_setImage(from: URL(string: (Values.PIC_URL + movie.poster))!)
         cell.row = indexPath
@@ -124,13 +131,21 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
         if expandedCell != nil {
             let cell = tableView.cellForRow(at: expandedCell!) as! MovieTVC
             cell.movieInfoLbl.isHidden = true
+            cell.arrowImg.image = #imageLiteral(resourceName: "down")
             expandedCell = nil
         } else if expandedCell == indexPath {
             expandedCell = nil
         } else {
             let cell = tableView.cellForRow(at: indexPath) as! MovieTVC
-            cell.movieInfoLbl.isHidden = !cell.movieInfoLbl.isHidden
-            expandedCell = indexPath
+            if !cell.arrowImg.isHidden{
+                cell.movieInfoLbl.isHidden = !cell.movieInfoLbl.isHidden
+                if cell.movieInfoLbl.isHidden{
+                    cell.arrowImg.image = #imageLiteral(resourceName: "down")
+                }else{
+                    cell.arrowImg.image = #imageLiteral(resourceName: "up")
+                }
+                expandedCell = indexPath
+            }
         }
 
         tableView.beginUpdates()
@@ -144,7 +159,10 @@ class SearchVC: UIViewController, MovieDelegate, UITableViewDataSource, UITableV
     }
 
     @IBAction func focusOnTF(_ sender: Any) {
-        
+        let searches = coreData.fetchFromCoreData()
+        if searches != nil{
+
+        }
     }
 
     /*

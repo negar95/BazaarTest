@@ -13,8 +13,8 @@ import UIKit
 class CoreDataHelper {
 
     @available(iOS 10.0, *)
-    func fetchFromCoreDate() -> [Search]?{
-        var useDatas = [NSManagedObject]()
+    func fetchFromCoreData() -> [Search]?{
+        var data = [NSManagedObject]()
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return nil
         }
@@ -24,10 +24,10 @@ class CoreDataHelper {
         let fechtRequest  = NSFetchRequest<NSManagedObject>(entityName: "Searches")
 
         do {
-            useDatas = try managedContext.fetch(fechtRequest)
+            data = try managedContext.fetch(fechtRequest)
             var searchItems = [Search]()
-            if useDatas.count > 0 {
-                for item in useDatas {
+            if data.count > 0 {
+                for item in data {
                     let searchItem = Search()
                     searchItem.title = item.value(forKey: "title") as! String
                     searchItems.append(searchItem)
@@ -48,7 +48,7 @@ class CoreDataHelper {
 
     @available(iOS 10.0, *)
     func saveToCoreData(info : Search) -> Bool{
-        var useDatas = [NSManagedObject]()
+        var data = [NSManagedObject]()
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return false
@@ -68,7 +68,7 @@ class CoreDataHelper {
 
         do {
             try managedContext.save()
-            useDatas.append(search)
+            data.append(search)
             return true
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
@@ -93,12 +93,11 @@ class CoreDataHelper {
 
             if result.count > 0{
                 for object in result {
-                    print(object)
                     managedContext.delete(object )
                 }
             }
         }catch{
-            print("item did not delete")
+            print("couldn't delete the item!")
         }
 
     }
@@ -112,24 +111,27 @@ class CoreDataHelper {
         let fechtRequest  = NSFetchRequest<NSManagedObject>(entityName: "Searches")
 
         do {
-            let nationalCode = try managedContext.fetch(fechtRequest)
-            for managedObject in nationalCode
+            let data = try managedContext.fetch(fechtRequest)
+            for obj in data
             {
-                let managedObjectData:NSManagedObject = managedObject
+                let managedObjectData:NSManagedObject = obj
                 managedContext.delete(managedObjectData)
             }
         } catch let error as NSError {
-            print("Detele all data in IsLoggedIn error : \(error) \(error.userInfo)")
+            print("Detele all data error : \(error) \(error.userInfo)")
         }
     }
 
+
     @available(iOS 10.0, *)
-    func addOrUpdateCoreDate(searchItem : Search) -> Bool{
-        let searches =  self.fetchFromCoreDate()
-        if searches != nil && (searches?.count)! > 9 {
-            self.deleteSingleFromCoreData(searches: searches![0])
+    func saveSearchToCoreData(search : Search) -> Bool{
+        let searches =  self.fetchFromCoreData()
+        if searches != nil{
+            if (searches?.count)! > 9 {
+                self.deleteSingleFromCoreData(searches: searches![0])
+            }
         }
-        return self.saveToCoreData(info: searchItem)
+        return self.saveToCoreData(info: search)
     }
 
 

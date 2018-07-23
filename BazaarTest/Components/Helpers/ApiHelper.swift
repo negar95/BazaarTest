@@ -25,7 +25,7 @@ class ApiHelper {
         - onCompletion: 
      */
     func jsonGetRequest(urlString: String, lstParams:
-        [String: AnyObject], onCompletion: @escaping (JSON, Bool) -> Void) {
+            [String: AnyObject], onCompletion: @escaping (JSON, Bool) -> Void) {
         Alamofire.request(urlString, method: .get, parameters: lstParams).responseJSON { (response) in
             switch response.result {
             case .success(let value):
@@ -46,27 +46,29 @@ class ApiHelper {
         if let totalResults = json["total_results"].int {
             if totalResults > 0 {
                 onCompletion(json, true)
+            } else if totalResults == 0 {
+                onCompletion(["error": "Nothing found"], false)
             } else {
-                onCompletion(["error": "bad request"], false)
+                onCompletion(["error": "Bad request"], false)
             }
         } else if !(json["success"].bool!) {
             onCompletion(["error": json["status_message"].string ?? "error"], false)
-        }else{
-            onCompletion(["error": ["error"]], false)
+        } else {
+            onCompletion(["error": ["Error"]], false)
         }
     }
 
     func xmlGetRequest(urlString: String, lstParams:
-        [String: AnyObject], onCompletion: @escaping ([String:Any], Bool) -> Void) {
+            [String: AnyObject], onCompletion: @escaping ([String: Any], Bool) -> Void) {
         Alamofire.request(urlString, method: .get, parameters: lstParams).responseData { response in
             switch response.result {
             case .success(let value):
                 let xml = XML.parse(value)
-                if let totalResults = xml["total_results"].int{
+                if let totalResults = xml["total_results"].int {
 
                     if totalResults > 0 {
                         var files: [[String: String]] = [[String: String]]()
-                        for item in xml["results"]{
+                        for item in xml["results"] {
                             var res: [String: String] = [String: String]()
                             res["id"] = item.element?.attributes["id"]!
                             res["title"] = item.element?.attributes["title"]!
@@ -75,13 +77,13 @@ class ApiHelper {
                             res["poster_path"] = item.element?.attributes["poster_path"]!
                             files.append(res)
                         }
-                         Movie.initItems(items: files)
-                        onCompletion(["success":"true"], true)
+                        Movie.initItems(items: files)
+                        onCompletion(["success": "true"], true)
                     } else {
-                        onCompletion(["error":"bad request"],false)
+                        onCompletion(["error": "bad request"], false)
                     }
-                }else{
-                    onCompletion(["error": xml["status_message"].description],false)
+                } else {
+                    onCompletion(["error": xml["status_message"].description], false)
                 }
             case .failure(let error):
                 onCompletion(["error": error as! String], false)

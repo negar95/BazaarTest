@@ -42,6 +42,4 @@ class Search : NSObject, NSCoding {
         }
         return lstSearches
     }
-
-
 }
