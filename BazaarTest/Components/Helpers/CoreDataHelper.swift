@@ -47,7 +47,7 @@ class CoreDataHelper {
     }
 
     @available(iOS 10.0, *)
-    func saveToCoreData(info : Search) -> Bool{
+    func saveToCoreData(search : Search) -> Bool{
         var data = [NSManagedObject]()
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -60,15 +60,15 @@ class CoreDataHelper {
             NSEntityDescription.entity(forEntityName:"Searches",
                                        in: managedContext)!
 
-        let search = NSManagedObject(entity: entity,
+        let searchObj = NSManagedObject(entity: entity,
                                      insertInto: managedContext)
 
 
-        search.setValue(info.title , forKeyPath: "title")
+        searchObj.setValue(search.title , forKeyPath: "title")
 
         do {
             try managedContext.save()
-            data.append(search)
+            data.append(searchObj)
             return true
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
@@ -78,14 +78,14 @@ class CoreDataHelper {
     }
 
     @available(iOS 10.0, *)
-    func deleteSingleFromCoreData(searches : Search){
+    func deleteSingleFromCoreData(search : Search){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
 
         let managedContext = appDelegate.persistentContainer.viewContext
         let fechtRequest  = NSFetchRequest<NSManagedObject>(entityName: "Searches")
-        let predicate = NSPredicate(format: "title = %@", searches.title)
+        let predicate = NSPredicate(format: "title = %@", search.title)
 
         fechtRequest.predicate = predicate
         do{
@@ -124,14 +124,19 @@ class CoreDataHelper {
 
 
     @available(iOS 10.0, *)
-    func saveSearchToCoreData(search : Search) -> Bool{
+    func pushToCoreDataStack(search : Search) -> Bool{
         let searches =  self.fetchFromCoreData()
         if searches != nil{
+            for entity in searches!{
+                if search.title == entity.title{
+                    return true
+                }
+            }
             if (searches?.count)! > 9 {
-                self.deleteSingleFromCoreData(searches: searches![0])
+                self.deleteSingleFromCoreData(search: searches![0])
             }
         }
-        return self.saveToCoreData(info: search)
+        return self.saveToCoreData(search: search)
     }
 
 

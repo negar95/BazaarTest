@@ -15,6 +15,7 @@ class iCloudHelper {
         keyStore.set(search.title, forKey: "title")
         keyStore.synchronize()
     }
+    
     func fetchFromiCloud() -> Search{
         let storedSearch = keyStore.string(forKey: "title")
         let instance = Search()

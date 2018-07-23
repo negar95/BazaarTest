@@ -31,7 +31,11 @@ class ApiHelper {
             case .success(let value):
                 self.checkValidity(json: JSON(value), onCompletion: onCompletion)
             case .failure(let error):
-                onCompletion(["error": JSON(error)], false)
+                if !NetworkReachabilityManager()!.isReachable{
+                    onCompletion(["error": "check your connection"], false)
+                }else {
+                    onCompletion(["error": JSON(error)], false)
+                }
             }
         }
     }
@@ -51,14 +55,16 @@ class ApiHelper {
             } else {
                 onCompletion(["error": "Bad request"], false)
             }
-        } else if !(json["success"].bool!) {
-            onCompletion(["error": json["status_message"].string ?? "error"], false)
+        } else if let success = json["success"].bool {
+            if !success{
+                onCompletion(["error": json["status_message"].string ?? "error"], false)
+            }
         } else {
             onCompletion(["error": ["Error"]], false)
         }
     }
 
-    func xmlGetRequest(urlString: String, lstParams:
+    func XMLGetRequest(urlString: String, lstParams:
             [String: AnyObject], onCompletion: @escaping ([String: Any], Bool) -> Void) {
         Alamofire.request(urlString, method: .get, parameters: lstParams).responseData { response in
             switch response.result {

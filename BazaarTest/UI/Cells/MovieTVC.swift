@@ -16,6 +16,7 @@ class MovieTVC: UITableViewCell {
     @IBOutlet weak var movieInfoLbl: UILabel!
     @IBOutlet weak var arrowImg: UIImageView!
     
+    
     var isExpanded : Bool = false
     var row : IndexPath = []
 

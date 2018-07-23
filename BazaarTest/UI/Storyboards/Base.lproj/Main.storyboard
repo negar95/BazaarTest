@@ -123,6 +123,50 @@
                                 <rect key="frame" x="16" y="50" width="313" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="30" id="pXr-ne-S0q" customClass="SearchTVC" customModule="BazaarTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="313" height="30"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pXr-ne-S0q" id="jch-M0-PNC">
+                                            <rect key="frame" x="0.0" y="0.0" width="313" height="29.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search query" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qe-NL-gVD">
+                                                    <rect key="frame" x="10" y="0.0" width="273" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Gue-IN-yWW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWD-ZD-I8n">
+                                                    <rect key="frame" x="283" y="0.0" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="TTk-dL-1eW"/>
+                                                        <constraint firstAttribute="height" constant="30" id="odP-w5-XSa"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="X"/>
+                                                    <connections>
+                                                        <action selector="deletePressed:" destination="pXr-ne-S0q" eventType="touchUpInside" id="ezT-ol-zxb"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eWD-ZD-I8n" firstAttribute="top" secondItem="jch-M0-PNC" secondAttribute="top" id="7kS-Q2-7MQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="eWD-ZD-I8n" secondAttribute="trailing" id="M1b-4A-Mr0"/>
+                                                <constraint firstItem="3qe-NL-gVD" firstAttribute="leading" secondItem="jch-M0-PNC" secondAttribute="leading" constant="10" id="M4q-HD-2dN"/>
+                                                <constraint firstItem="3qe-NL-gVD" firstAttribute="top" secondItem="jch-M0-PNC" secondAttribute="top" id="bJh-0J-f8U"/>
+                                                <constraint firstItem="eWD-ZD-I8n" firstAttribute="leading" secondItem="3qe-NL-gVD" secondAttribute="trailing" id="hCF-5W-rdl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="deleteBtn" destination="eWD-ZD-I8n" id="kYE-rS-exu"/>
+                                            <outlet property="searchTitleLbl" destination="3qe-NL-gVD" id="Ycy-1m-SxT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -143,6 +187,7 @@
                     </view>
                     <connections>
                         <outlet property="indicator" destination="Dat-UK-gdR" id="ajL-8S-DH4"/>
+                        <outlet property="recentlyTable" destination="5In-MZ-42j" id="c2X-do-CxR"/>
                         <outlet property="resultTable" destination="8ma-r3-LiM" id="ThY-VQ-zpD"/>
                         <outlet property="searchBtn" destination="B3j-bj-uIf" id="oMo-b6-cWo"/>
                         <outlet property="searchTF" destination="0K5-VE-EjF" id="hYY-ZY-sEW"/>

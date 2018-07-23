@@ -16,4 +16,6 @@ class Values {
     static let MORE_INFO = "moreInfo"
     static let LESS_INFO = "lessInfo"
 
+    static let MOVIE_CELL = "movieCell"
+    static let SEARCH_CELL = "searchCell"
 }

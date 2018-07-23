@@ -18,8 +18,10 @@
 		847E5A6920FF2B5C009AF782 /* BazaarTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 847E5A6720FF2B5C009AF782 /* BazaarTest.xcdatamodeld */; };
 		847E5A6B20FF2B5C009AF782 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847E5A6A20FF2B5C009AF782 /* Assets.xcassets */; };
 		847E5A6E20FF2B5C009AF782 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847E5A6C20FF2B5C009AF782 /* LaunchScreen.storyboard */; };
-		847E5A7920FF2B5C009AF782 /* BazaarTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E5A7820FF2B5C009AF782 /* BazaarTestTests.swift */; };
 		847E5A8420FF2B5C009AF782 /* BazaarTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E5A8320FF2B5C009AF782 /* BazaarTestUITests.swift */; };
+		84823C1F2105C57B00469B14 /* SearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84823C1E2105C57B00469B14 /* SearchTVC.swift */; };
+		84823C2121061FFA00469B14 /* CoreDataHelperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84823C2021061FFA00469B14 /* CoreDataHelperTest.swift */; };
+		84823C2321062C1100469B14 /* ApiHelperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84823C2221062C1100469B14 /* ApiHelperTest.swift */; };
 		8488B46A21005CC700280A86 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8488B46921005CC700280A86 /* SearchVC.swift */; };
 		8488B46E2100611A00280A86 /* MovieTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8488B46D2100611A00280A86 /* MovieTVC.swift */; };
 		84A7CFA82100863A00AD4827 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CFA72100863A00AD4827 /* ApiHelper.swift */; };
@@ -66,11 +68,13 @@
 		847E5A6D20FF2B5C009AF782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		847E5A6F20FF2B5C009AF782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		847E5A7420FF2B5C009AF782 /* BazaarTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BazaarTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		847E5A7820FF2B5C009AF782 /* BazaarTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BazaarTestTests.swift; sourceTree = "<group>"; };
 		847E5A7A20FF2B5C009AF782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		847E5A7F20FF2B5C009AF782 /* BazaarTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BazaarTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		847E5A8320FF2B5C009AF782 /* BazaarTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BazaarTestUITests.swift; sourceTree = "<group>"; };
 		847E5A8520FF2B5C009AF782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84823C1E2105C57B00469B14 /* SearchTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVC.swift; sourceTree = "<group>"; };
+		84823C2021061FFA00469B14 /* CoreDataHelperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelperTest.swift; sourceTree = "<group>"; };
+		84823C2221062C1100469B14 /* ApiHelperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelperTest.swift; sourceTree = "<group>"; };
 		8488B46921005CC700280A86 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		8488B46D2100611A00280A86 /* MovieTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTVC.swift; sourceTree = "<group>"; };
 		84A7CFA72100863A00AD4827 /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
@@ -165,8 +169,9 @@
 		847E5A7720FF2B5C009AF782 /* BazaarTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				847E5A7820FF2B5C009AF782 /* BazaarTestTests.swift */,
 				847E5A7A20FF2B5C009AF782 /* Info.plist */,
+				84823C2021061FFA00469B14 /* CoreDataHelperTest.swift */,
+				84823C2221062C1100469B14 /* ApiHelperTest.swift */,
 			);
 			path = BazaarTestTests;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				8488B46D2100611A00280A86 /* MovieTVC.swift */,
+				84823C1E2105C57B00469B14 /* SearchTVC.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 					};
 					847E5A7320FF2B5C009AF782 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 847E5A5C20FF2B5C009AF782;
 					};
@@ -518,6 +525,7 @@
 				84AA3FEE210224DB008EE279 /* ViewHelper.swift in Sources */,
 				842B7D722101D9B4009E9DF5 /* Search.swift in Sources */,
 				8488B46E2100611A00280A86 /* MovieTVC.swift in Sources */,
+				84823C1F2105C57B00469B14 /* SearchTVC.swift in Sources */,
 				847E5A6920FF2B5C009AF782 /* BazaarTest.xcdatamodeld in Sources */,
 				84AA3FEC2101F608008EE279 /* Extensions.swift in Sources */,
 			);
@@ -527,7 +535,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				847E5A7920FF2B5C009AF782 /* BazaarTestTests.swift in Sources */,
+				84823C2321062C1100469B14 /* ApiHelperTest.swift in Sources */,
+				84823C2121061FFA00469B14 /* CoreDataHelperTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,12 +734,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 687BB68TVP;
 				INFOPLIST_FILE = BazaarTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = negar.BazaarTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BazaarTest.app/BazaarTest";
@@ -743,6 +754,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 687BB68TVP;
 				INFOPLIST_FILE = BazaarTestTests/Info.plist;
