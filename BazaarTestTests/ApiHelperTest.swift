@@ -72,7 +72,7 @@ class ApiHelperTest: XCTestCase{
     }
 
     func testCheckValidity(){
-        let
+        
     }
     
 }
