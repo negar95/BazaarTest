@@ -73,9 +73,9 @@ class ApiHelper {
                 if let totalResults = xml["total_results"].int {
 
                     if totalResults > 0 {
-                        var files: [[String: String]] = [[String: String]]()
+                        var files = [[String: Any]]()
                         for item in xml["results"] {
-                            var res: [String: String] = [String: String]()
+                            var res = [String: Any]()
                             res["id"] = item.element?.attributes["id"]!
                             res["title"] = item.element?.attributes["title"]!
                             res["release_date"] = item.element?.attributes["release_date"]!

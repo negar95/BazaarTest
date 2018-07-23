@@ -72,7 +72,12 @@ class ApiHelperTest: XCTestCase{
     }
 
     func testCheckValidity(){
-        
+        let jsonData = ["total_results": 12] as JSON
+        ApiHelper.sharedApi.checkValidity(json: jsonData){
+            result, status in
+            XCTAssertNotNil(result)
+            XCTAssertTrue(status)
+        }
     }
     
 }

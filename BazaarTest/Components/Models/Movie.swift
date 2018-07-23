@@ -39,7 +39,7 @@ class Movie : NSObject{
         return movies
     }
 
-    class func initItems(items : [[String: String]]){
+    class func initItems(items : [[String: Any]]){
         self.items = items
     }
     
