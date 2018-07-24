@@ -9,8 +9,12 @@
 import Foundation
 import SQLite
 
+/**
+ This class is for working with SQLite database.
+ */
 class SQLiteHelper : NSObject{
 
+    ///This function is for creating a table to save entities.
     func createTables() {
         let search = Table(Search.TABLE_NAME)
         do {

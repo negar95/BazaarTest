@@ -10,11 +10,13 @@ import Foundation
 import SQLite
 import SwiftyJSON
 
+///This class is definition of the search model, and related functions.
 class Search : NSObject, NSCoding {
 
     static let TABLE_NAME = "Search"
     static let TITLE = Expression<String>("title")
 
+    ///The title of the movie that is used for search.
     var title = ""
 
     override init() {

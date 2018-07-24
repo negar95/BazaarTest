@@ -9,6 +9,7 @@
 import XCTest
 
 class BazaarTestUITests: XCTestCase {
+    var app: XCUIApplication!
         
     override func setUp() {
         super.setUp()
@@ -18,8 +19,8 @@ class BazaarTestUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
+        app = XCUIApplication()
+        app.launch()
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
@@ -28,9 +29,16 @@ class BazaarTestUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testExistence() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+        app.textFields["Enter a movie name"].tap()
+        
+        let tablesQuery = app.tables
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["batman"]/*[[".cells.staticTexts[\"batman\"]",".staticTexts[\"batman\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery.cells.containing(.staticText, identifier:"🕒 1989-06-23").staticTexts["Batman"].tap()
+
     }
     
 }

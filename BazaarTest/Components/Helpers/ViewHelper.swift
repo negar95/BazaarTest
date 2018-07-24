@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
+///This class is for some view functions.
 class ViewHelper {
 
+    ///This function shows a toast message at the top of the view.
     class func showToastMessage(message: String) {
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let holder = UIView(frame: CGRect.zero)
@@ -19,8 +21,8 @@ class ViewHelper {
         label.text = message
         label.font = UIFont(name: "Helvetica", size: 13)
         label.adjustsFontSizeToFitWidth = true
-        holder.backgroundColor = UIColor.black
-        label.backgroundColor = UIColor.black
+        holder.backgroundColor = UIColor.gray
+        label.backgroundColor = UIColor.darkGray
         label.textColor = UIColor.white
         label.sizeToFit()
         label.numberOfLines = 4

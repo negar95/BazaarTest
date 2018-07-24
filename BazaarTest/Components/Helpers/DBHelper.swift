@@ -9,11 +9,16 @@
 import UIKit
 import SQLite
 
-
+/**
+ This class is for connecting to database. The connection is alive which
+ means we don't need to open it every time we want to work with database
+ which cause big load on CPU.
+ */
 class DBHelper: NSObject {
+    ///Connect to database
     var database: Connection!
 
-
+    ///This is what make our connection alive, singleton impelementation.
     static let sharedDatabase: DBHelper = {
 
         let instance = DBHelper()

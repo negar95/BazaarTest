@@ -26,10 +26,6 @@ class CoreDataHelperTest: XCTestCase {
         super.tearDown()
     }
 
-    func testFetchFromCoreData() {
-        
-    }
-
     func testSaveToCoreData(){
         XCTAssertTrue(coreDataHelper.saveToCoreData(search: search))
     }

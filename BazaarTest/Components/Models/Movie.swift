@@ -10,6 +10,8 @@ import Foundation
 import SwiftyJSON
 import SwiftyXMLParser
 
+
+///This class is definition of the movie model, and build single movie and list of movies.
 class Movie : NSObject{
     static var items = [[String: Any]]()
     var id = 0
@@ -18,6 +20,11 @@ class Movie : NSObject{
     var poster = ""
     var info = ""
 
+    /**
+     This function is for parsing json data and create a movie instance with that.
+     - parameters:
+        - jsonData: The json data to build a movie with.
+     */
     class func buildSingle(jsonData: JSON) -> Movie {
         let movie = Movie()
 
@@ -31,6 +38,11 @@ class Movie : NSObject{
 
     }
 
+    /**
+     This function is for parsing json array and create a list of movie instances with that.
+     - parameters:
+        - jsonData: The json array to build the movie list with.
+     */
     class func buildList(jsonData: JSON) -> [Movie] {
         var movies = [Movie]()
         for index in 0..<jsonData.count {
@@ -39,10 +51,23 @@ class Movie : NSObject{
         return movies
     }
 
+    /**
+     This function is for initializing the items variable
+     which is use to create list from xml data.
+     - parameters:
+        - items: A [[String: Any]] dictionary array.
+     */
     class func initItems(items : [[String: Any]]){
         self.items = items
     }
-    
+
+    /**
+     This function is for parsing xml data and create a movie
+     instance with that.
+     - parameters:
+        - xmlData: A [String: Any] dictionary made of xml data
+        to build a movie instance with.
+     */
     class func buildSingle(xmlData: [String: Any]) -> Movie {
         let movie = Movie()
 
@@ -56,6 +81,7 @@ class Movie : NSObject{
 
     }
 
+    ///This function is for creating an array of Movie type.
     class func buildList() -> [Movie] {
         var movies = [Movie]()
         for movie in self.items {

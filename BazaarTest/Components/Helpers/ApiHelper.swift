@@ -11,8 +11,13 @@ import SwiftyJSON
 import SwiftyXMLParser
 import Alamofire
 
+/**
+ This class is for handling all requests in our app, and the answers
+ are pass according to the type of request function we call.
+ */
 class ApiHelper {
 
+    ///singleton implementation
     static let sharedApi: ApiHelper = {
         let instance = ApiHelper()
 
@@ -21,16 +26,19 @@ class ApiHelper {
 
     /**
      - parameters:
-        - urlString: The request url
-        - onCompletion: 
+         - urlString: The request url
+         - lstParams: The paramets that should be sent with request
+         - onCompletion: Completion handler consists of result JSON and status
      */
     func jsonGetRequest(urlString: String, lstParams:
             [String: AnyObject], onCompletion: @escaping (JSON, Bool) -> Void) {
         Alamofire.request(urlString, method: .get, parameters: lstParams).responseJSON { (response) in
             switch response.result {
             case .success(let value):
+                //if the request is successful, the validity of the result should be tested.
                 self.checkValidity(json: JSON(value), onCompletion: onCompletion)
             case .failure(let error):
+                //it checks the internet connection
                 if !NetworkReachabilityManager()!.isReachable{
                     onCompletion(["error": "check your connection"], false)
                 }else {
@@ -41,9 +49,11 @@ class ApiHelper {
     }
 
     /**
+     This function checks the result of json request. If total_results key
+     is available and has a value our result is valid
      - parameters:
-         - json:
-         - onCompletion:
+        - json: Result of the request
+        - onCompletion: Completion handler consists of result JSON and status
      */
     func checkValidity(json: JSON, onCompletion: (JSON, Bool) -> Void) {
 
@@ -51,6 +61,7 @@ class ApiHelper {
             if totalResults > 0 {
                 onCompletion(json, true)
             } else if totalResults == 0 {
+                //if search on the query has no result
                 onCompletion(["error": "Nothing found"], false)
             } else {
                 onCompletion(["error": "Bad request"], false)
@@ -64,12 +75,20 @@ class ApiHelper {
         }
     }
 
+    /**
+     - parameters:
+         - urlString: The request url
+         - lstParams: The paramets that should be sent with request
+         - onCompletion: Completion handler consists of result dictionary and status
+     */
     func XMLGetRequest(urlString: String, lstParams:
             [String: AnyObject], onCompletion: @escaping ([String: Any], Bool) -> Void) {
         Alamofire.request(urlString, method: .get, parameters: lstParams).responseData { response in
             switch response.result {
             case .success(let value):
                 let xml = XML.parse(value)
+                //if the request is successful, the validity of the result should be tested.
+                //A valid answer has total_results key and its value
                 if let totalResults = xml["total_results"].int {
 
                     if totalResults > 0 {

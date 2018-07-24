@@ -13,6 +13,7 @@ class SearchTVC: UITableViewCell {
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var searchTitleLbl: UILabel!
 
+    //each cell has a special search entity
     var searchEntity = Search()
     let coreData = CoreDataHelper()
     
@@ -20,7 +21,8 @@ class SearchTVC: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
+    //delete recently search
     @IBAction func deletePressed(_ sender: Any) {
         coreData.deleteSingleFromCoreData(search: searchEntity)
         self.layer.opacity = 0.5
