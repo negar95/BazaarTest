@@ -29,16 +29,20 @@ class BazaarTestUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExistence() {
+    func testIsRecentliesAppear() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
 
-        app.textFields["Enter a movie name"].tap()
+        let enterAMovieNameTextField = app.textFields["Enter a movie name"]
+        enterAMovieNameTextField.tap()
         
-        let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["batman"]/*[[".cells.staticTexts[\"batman\"]",".staticTexts[\"batman\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        tablesQuery.cells.containing(.staticText, identifier:"🕒 1989-06-23").staticTexts["Batman"].tap()
-
+        let table = app.otherElements.containing(.textField, identifier:"Enter a movie name").children(matching: .table).element
+        XCTAssertTrue(table.exists)
     }
-    
+
+    func testIsEmptyTextFieldShowsToastMessage() {
+        let searchButton = app.buttons["search"]
+        searchButton.tap()
+        XCTAssertTrue(app.staticTexts["I can't search for nothing!"].exists)
+    }
 }
